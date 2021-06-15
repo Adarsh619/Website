@@ -1,70 +1,149 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-
-* {
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap');
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 }
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #042069;
-    color: #fff;
+.bg-img{
+    background: url('bg.jpg');
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
 }
-h1 {
+.bg-img:after{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0);
+}
+.content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    margin: 2em 0;
-    font-size: 2.5em;
+    z-index: 999;
+    width: 370px;
+    padding: 60px 32px;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: -1px 4px 28px 0px rgba(255, 255, 255, 0.95);
+} 
+.content header{
+    color: white;
+    font-size: 33px;
+    font-weight: 600;
+    margin: 0 0 35px 0;
+    font-family: 'Montserrat',sans-serif;
 }
-
-.accordion {
-  width: 90%;
-  max-width: 1000px;
-  margin: 2em auto;
+.field{
+    position: relative;
+    height: 45px;
+    width: 100%;
+    display: flex;
+    background:rgba(255, 255, 255, 0.95);
 }
-.accordion-item {
-    background-color: #fff;
-    color: #111;
-    margin: 1em 0;
-    border-radius: 0.5em;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.5);
+.field span{
+    color: #222;
+    width: 40px;
+    line-height: 45px;
 }
-.accordion-item-header {
-  padding: 0.5em 3em 0.5em 1em;
-  min-height: 3.5em;
-  line-height: 1.25em;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  position: relative;
-  cursor: pointer;
+.field input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color:#222;
+    font-size: 16px;
+    font-family: 'Poppins' ,sans-serif;
 }
-.accordion-item-header::after {
-  content: "\002B"; 
-  font-size: 2em;  
-  position: absolute;
-  right: 1em;
-  
+.show{
+    position: absolute;
+    right: 13px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #222;
+    cursor: pointer;
+    display: none;
+    font-family: 'Montserrat' ,sans-serif;
 }
-.accordion-item-header.active::after {
-  content: "\2212";   
+.password:valid ~ .show{
+    display: block;
 }
-.accordion-item-body {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height;
+.space{
+    margin-top: 16px;
 }
-.accordion-item-body-content {
-    padding: 1em;
-    line-height: 1.5em;
-    border-top: 1px solid;
-    border-image: linear-gradient(to right, transparent, #008f68, transparent) 1;
+.pass{
+    text-align: left;
+    margin: 10px 0;
 }
-/* .accordion-item-header.active + .accordion-item-body {
-  max-height: 200px;
-} */
-
-@media(max-width:767px) {
-    html {
-     font-size: 14px;
-    }
+.pass a{
+    color: white;
+    font-family: 'Poppins' ,sans-serif; 
+    text-decoration: none;
+}
+.pass:hover a{
+    text-decoration: underline;
+}
+input[type="submit"]{
+    background: #3498db;
+    border: 1px solid #2691d9;
+    color: white;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Montserrat' ,sans-serif;
+}
+input[type="submit"]:hover{
+    background: #2691d9;
+}
+.login{
+    color: white;
+    margin: 20px 0;
+    font-family: 'Poppins' ,sans-serif;
+}
+.link{
+    display: flex;
+    cursor: pointer;
+    color: white;
+    margin: 0 0 20px 0;
+}
+.facebook{
+    width: 100%;
+    height: 42px;
+    line-height: 45px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.facebook{
+    margin-left: 0px;
+    background: #4267b2;
+    border: 1px solid #3e61a8;
+}
+.link i{
+    font-size: 17px;
+}
+.link span{
+    font-size: 16px;
+    margin-left: 8px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-family: 'Poppins' ,sans-serif;
+}
+.signup{
+    color: white;
+    font-size: 15px;
+    font-family: 'Poppins' ,sans-serif;
+}
+.signup a{
+    color: #3498db;
+    text-decoration: none;
+}
+.signup a:hover{
+    text-decoration: underline;
 }

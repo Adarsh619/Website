@@ -1,67 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Accordion</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
-</head>
-<body>
-    <h1>FAQ</h1>
-
-    <div class="accordion">
-        <div class="accordion-item">
-            <div class="accordion-item-header">
-               What is Web Development?
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+  <body>
+    <div class="bg-img">
+      <div class="content">
+        <header>Login Form</header>
+        <form action="#">
+          <div class="field">
+            <span class="fa fa-user"></span>
+            <input type="text" required placeholder="Email or Phone number" />
+          </div>
+          <div class="field space">
+            <span class="fa fa-lock"></span>
+            <input
+              type="password"
+              class="password"
+              required
+              placeholder="Enter Password"
+            />
+            <span class="show">SHOW</span>
+          </div>
+          <div class="pass">
+            <a href="#">Forgot Password?</a>
+          </div>
+          <div class="field">
+            <input type="submit" value="Login" />
+          </div>
+          <div class="login">Or login with</div>
+          <div class="link">
+            <div class="facebook" onclick="signIn()">
+              <i class="fab fa-facebook-f"><span>Facebook</span></i>
             </div>
-            <div class="accordion-item-body">
-              <div class="accordion-item-body-content">
-                Web development is the work involved in developing a Web site for the Internet or an intranet. Web development can range from developing a simple single static page of plain text to complex web applications, electronic businesses, and social network services.
-              </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-item-header">
-               What is HTML?
-            </div>
-            <div class="accordion-item-body">
-              <div class="accordion-item-body-content">
-                HTML is a markup language that web browsers use to interpret and compose text, images, and other material into visual or audible web pages.
-              </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-item-header">
-               What is CSS?
-            </div>
-            <div class="accordion-item-body">
-              <div class="accordion-item-body-content">
-                CSS is the language for describing the presentation of Web pages, including colors, layout, and fonts. It allows one to adapt the presentation to different types of devices, such as large screens, small screens, or printers. CSS is independent of HTML and can be used with any XML-based markup language.
-              </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-item-header">
-               What is JS?
-            </div>
-            <div class="accordion-item-body">
-              <div class="accordion-item-body-content">
-                JavaScript is a text-based programming language used both on the client-side and server-side that allows you to make web pages interactive. Where HTML and CSS are languages that give structure and style to web pages, JavaScript gives web pages interactive elements that engage a user.
-              </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-item-header">
-                How long is a webinar?
-            </div>
-            <div class="accordion-item-body">
-              <div class="accordion-item-body-content">
-                All of our webinars are 60 minutes which consists of a 45 minute presentation/discussion and a 15 minute Q & A session.
-              </div>
-            </div>
-        </div>
+          </div>
+          <div class="signup">
+            Don't have a account?
+            <a href="#">Signup Now</a>
+          </div>
+        </form>
+      </div>
     </div>
-</body>
+
+    <script>
+      const pass_field = document.querySelector(".password");
+      const show_btn = document.querySelector(".show");
+      show_btn.addEventListener("click", function () {
+        if (pass_field.type === "password") {
+          pass_field.type = "text";
+          show_btn.style.color = "#3498db";
+          show_btn.textContent = "HIDE";
+        } else {
+          pass_field.type = "password";
+          show_btn.style.color = "#222";
+          show_btn.textContent = "SHOW";
+        }
+      });
+    </script>
+  </body>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyCt0523ZWdOBU5HujndN8VOtIuFiOZtsTk",
+      authDomain: "ihaconsultancy-aa7f3.firebaseapp.com",
+      projectId: "ihaconsultancy-aa7f3",
+      storageBucket: "ihaconsultancy-aa7f3.appspot.com",
+      messagingSenderId: "612489409778",
+      appId: "1:612489409778:web:81694341ff9152db6a4c6b",
+      measurementId: "G-51WWTB7GK4",
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+  <script>
+    function signIn() {
+      var provider = new firebase.auth.FacebookAuthProvider();
+      provider.addScope('user_birthday');
+      firebase.auth().useDeviceLanguage();
+      firebase
+  .auth()
+  .signInWithPopup(provider)
+  .then((result) => {
+    /** @type {firebase.auth.OAuthCredential} */
+    var credential = result.credential;
+
+    // The signed-in user info.
+    var user = result.user;
+
+    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    var accessToken = credential.accessToken;
+
+    // ...
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+
+    // ...
+  });
+    }
+  </script>
 </html>
